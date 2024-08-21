@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Kalendarzyk.Views.AddNewMainTypePage"
+             xmlns:customControls="clr-namespace:Kalendarzyk.Views.CustomControls"
+             x:Name="AddNewMainTypePageName"
+             Title="AddNewMainTypePage">
+    <ScrollView    BackgroundColor="{DynamicResource MainBackgroundColor}">
+        <StackLayout>
+            
+            
+            <!--TEMP REMOVE -> PROB FOR GOOD
+            --><!-- Button to go to all MainEvents Page--><!--
+            <Button Text="ALL Main TYPES PAGE" Command="{Binding GoToAllMainTypesPageCommand}" BackgroundColor="DarkGoldenrod" 
+                         HorizontalOptions="End" BorderColor="CadetBlue" BorderWidth="3" Margin="10"/>-->
+
+            <!-- Textbox for new type name -->
+            <Grid HorizontalOptions="Center" Margin="10">
+                <!-- Define the columns of the Grid-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Entry for new type name -->
+                <Entry Grid.Column="1" 
+                               Placeholder="{Binding MainTypePlaceholderText}" 
+                               Text="{Binding MainTypeName, Mode=TwoWay}" 
+                               FontAttributes="Bold" FontSize="Body"
+                               HorizontalTextAlignment="Center" 
+                               BackgroundColor="{DynamicResource MainTextboxesBackgroundColor}" 
+                               TextColor="{DynamicResource MainTextColor}" IsReadOnly="{Binding IsQuickNoteMainType}"
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Start"  />
+                <!-- Adjust margin as needed to position the icon -->
+                <Frame  Grid.Column="0" Padding="0"  
+                            BackgroundColor="{Binding BackGroundColorsHelper.SelectedColor}"
+                            >
+
+                    <Label 
+                                Text="{Binding SelectedVisualElementString}"
+                                TextColor="{Binding TextColorsHelper.SelectedColor}"
+                                Style="{StaticResource GoogleFont}"
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Center"/>
+                </Frame>
+
+            </Grid>
+
+            <customControls:SelectableButtonsFlexLayoutCC ItemsSource="{Binding MainButtonVisualsSelectors}"  AlignItems="Center" JustifyContent="Center" />
+
+
+            <!-- TO SHOW ONLY IF ICONS ARE SELECTED !!!-->
+            <StackLayout Margin="10">
+                <customControls:SelectableButtonsFlexLayoutCC ItemsSource="{Binding IconsTabsOC, Mode=TwoWay}" AlignItems="Start" JustifyContent="Start" />
+                <!-- Icon Selection UI -->
+                <!-- TO SHOW ONLY IF ICONS ARE SELECTED !!!-->
+                <CollectionView ItemsSource="{Binding IconsToShowStringsOC, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Margin="30"  IsVisible="{Binding IsIconsTabSelected}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="3" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Button BackgroundColor="Transparent"
+                                    Command="{Binding Path=BindingContext.ExactIconSelectedCommand, Source={x:Reference AddNewMainTypePageName}}" 
+                                    CommandParameter="{Binding .}"
+                                    HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="FillAndExpand"/>
+                                <Label Text="{Binding .}"
+                                           Style="{StaticResource GoogleFont}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center">
+                                   <Label.GestureRecognizers>
+                                       <TapGestureRecognizer 
+                                        Command="{Binding Path=BindingContext.ExactIconSelectedCommand, Source={x:Reference AddNewMainTypePageName}}" 
+                                        CommandParameter="{Binding .}" 
+                                       />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+            
+            <!--Background Colors-->
+            <customControls:ColorButtonsSelectorCC Margin="5" ColorButtonsSelectorHelper="{Binding BackGroundColorsHelper}" IsVisible="{Binding IsBgColorsTabSelected}"/>
+
+            <!--Text Colors-->
+            <customControls:ColorButtonsSelectorCC Margin="5"
+                ColorButtonsSelectorHelper="{Binding TextColorsHelper}" 
+                BindingContext="{Binding}"  IsVisible="{Binding IsTextColorsTabSelected}"/>
+
+            <!--Background Colors--><!-- 
+            <customControls:ColorButtonsSelectorCC Margin="5"
+                ColorButtonsSelectorHelper="{Binding BgColorsButtonsOC}" 
+                ColorButtonCommand="{Binding Path=BindingContext.BgColorsCommand, Source={x:Reference AddNewMainTypePageName}}" 
+                BindingContext="{Binding}"  IsVisible="{Binding IsBgColorsTabSelected}"/>
+
+            --><!--Text Colors--><!-- 
+            <customControls:ColorButtonsSelectorCC Margin="5"
+                ColorButtonsSelectorHelper="{Binding TextColorsButtonsOC}" 
+                ColorButtonCommand="{Binding Path=BindingContext.TextColorsCommand, Source={x:Reference AddNewMainTypePageName}}" 
+                BindingContext="{Binding}"  IsVisible="{Binding IsTextColorsTabSelected}"/>-->
+
+        
+            <!--Down of the screen buttons-->
+            <Button Text="DELETE SELECTED MAIN TYPE" IsVisible="{Binding IsEdit}" Command="{Binding DeleteAsyncSelectedEventGroupCommand}" BackgroundColor="Red"/>
+            <Button Margin="5" Text="{Binding SubmitMainTypeButtonText}" Command="{Binding AsyncSubmitMainTypeCommand}" HorizontalOptions="Center"
+                    TextColor="{DynamicResource MainTextColor}" BackgroundColor="{DynamicResource MainButtonBackgroundColor}"/>
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>
