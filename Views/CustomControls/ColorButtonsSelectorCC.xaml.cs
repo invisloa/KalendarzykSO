@@ -1,4 +1,4 @@
-using Kalendarzyk.Views.CustomControls.CCViewModels;
+using KalendarzykSO.ViewModels.CustomControls;
 
 namespace Kalendarzyk.Views.CustomControls;
 

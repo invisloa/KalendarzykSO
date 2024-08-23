@@ -1,6 +1,8 @@
 ﻿using Kalendarzyk.Data;
+using Kalendarzyk.Models;
 using Kalendarzyk.Models.EventModels;
 using Kalendarzyk.Models.EventTypesModels;
+using KalendarzykSO.ViewModels.CustomControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +10,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 
 namespace TheKalendarzyk.Services
@@ -46,6 +49,26 @@ namespace TheKalendarzyk.Services
             }
 
             return new ObservableCollection<MeasurementUnitItem>(measurementUnitItems);
+        }
+        public static IColorButtonsSelectorHelperClass CreateNewIColorButtonsHelperClass(
+    ObservableCollection<SelectableButtonViewModel> colorButtons = null,
+    ICommand selectedButtonCommand = null,
+    Color? startingColor = null)
+        {
+            return new ColorButtonsSelectorViewModel(colorButtons, selectedButtonCommand, startingColor);
+        }
+        internal static IconModel CreateGroupVisualElement(string selectedIconString, Color backgroundColor, Color textColor)
+        {
+            return new IconModel(selectedIconString, backgroundColor, textColor);
+        }
+        internal static EventGroupModel CreateNewEventGroup(string mainTypeName, IconModel iconForEventGroup)
+        {
+            return new EventGroupModel(mainTypeName, iconForEventGroup);
+        }
+
+        internal static IEventsService CreateNewEventService()
+        {
+            return new EventsService(_eventRepository);
         }
     }
 }

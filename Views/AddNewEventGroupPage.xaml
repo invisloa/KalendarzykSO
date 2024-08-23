@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Kalendarzyk.Views.AddNewMainTypePage"
+             x:Class="KalendarzykSO.Views.AddNewEventGroupPage"
              xmlns:customControls="clr-namespace:Kalendarzyk.Views.CustomControls"
-             x:Name="AddNewMainTypePageName"
-             Title="AddNewMainTypePage">
+             Title="AddNewEventGroupPage">
     <ScrollView    BackgroundColor="{DynamicResource MainBackgroundColor}">
         <StackLayout>
-            
-            
-            <!--TEMP REMOVE -> PROB FOR GOOD
-            --><!-- Button to go to all MainEvents Page--><!--
-            <Button Text="ALL Main TYPES PAGE" Command="{Binding GoToAllMainTypesPageCommand}" BackgroundColor="DarkGoldenrod" 
-                         HorizontalOptions="End" BorderColor="CadetBlue" BorderWidth="3" Margin="10"/>-->
-
-            <!-- Textbox for new type name -->
             <Grid HorizontalOptions="Center" Margin="10">
                 <!-- Define the columns of the Grid-->
                 <Grid.ColumnDefinitions>
@@ -71,8 +62,8 @@
                                            Style="{StaticResource GoogleFont}"
                                            HorizontalOptions="Center"
                                            VerticalOptions="Center">
-                                   <Label.GestureRecognizers>
-                                       <TapGestureRecognizer 
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer 
                                         Command="{Binding Path=BindingContext.ExactIconSelectedCommand, Source={x:Reference AddNewMainTypePageName}}" 
                                         CommandParameter="{Binding .}" 
                                        />
@@ -84,7 +75,7 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </StackLayout>
-            
+
             <!--Background Colors-->
             <customControls:ColorButtonsSelectorCC Margin="5" ColorButtonsSelectorHelper="{Binding BackGroundColorsHelper}" IsVisible="{Binding IsBgColorsTabSelected}"/>
 
@@ -93,19 +84,22 @@
                 ColorButtonsSelectorHelper="{Binding TextColorsHelper}" 
                 BindingContext="{Binding}"  IsVisible="{Binding IsTextColorsTabSelected}"/>
 
-            <!--Background Colors--><!-- 
+            <!--Background Colors-->
+             
             <customControls:ColorButtonsSelectorCC Margin="5"
                 ColorButtonsSelectorHelper="{Binding BgColorsButtonsOC}" 
-                ColorButtonCommand="{Binding Path=BindingContext.BgColorsCommand, Source={x:Reference AddNewMainTypePageName}}" 
+                
                 BindingContext="{Binding}"  IsVisible="{Binding IsBgColorsTabSelected}"/>
+            <!--ColorButtonCommand="{Binding Path=BindingContext.BgColorsCommand, Source={x:Reference AddNewMainTypePageName}}"-->
 
-            --><!--Text Colors--><!-- 
-            <customControls:ColorButtonsSelectorCC Margin="5"
+            <!--Text Colors-->
+             
+            <!--<customControls:ColorButtonsSelectorCC Margin="5"
                 ColorButtonsSelectorHelper="{Binding TextColorsButtonsOC}" 
                 ColorButtonCommand="{Binding Path=BindingContext.TextColorsCommand, Source={x:Reference AddNewMainTypePageName}}" 
                 BindingContext="{Binding}"  IsVisible="{Binding IsTextColorsTabSelected}"/>-->
 
-        
+
             <!--Down of the screen buttons-->
             <Button Text="DELETE SELECTED MAIN TYPE" IsVisible="{Binding IsEdit}" Command="{Binding DeleteAsyncSelectedEventGroupCommand}" BackgroundColor="Red"/>
             <Button Margin="5" Text="{Binding SubmitMainTypeButtonText}" Command="{Binding AsyncSubmitMainTypeCommand}" HorizontalOptions="Center"

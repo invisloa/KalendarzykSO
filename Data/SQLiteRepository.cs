@@ -130,7 +130,7 @@ namespace Kalendarzyk.Data
             await _database.UpdateAsync(eventTypeToUpdate);
         }
 
-        public async Task DeleteEventTypesAsync(EventTypeModel eventTypeToDelete)
+        public async Task DeleteEventTypeAsync(EventTypeModel eventTypeToDelete)
         {
             await _database.DeleteAsync(eventTypeToDelete);
         }

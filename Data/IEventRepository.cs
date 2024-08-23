@@ -28,7 +28,7 @@ namespace Kalendarzyk.Data
         Task AddEventTypeAsync(EventTypeModel eventTypeToAdd);
         Task<IEnumerable<EventTypeModel>> GetEventTypesListAsync();
         Task UpdateEventTypeAsync(EventTypeModel eventTypeToUpdate);
-        Task DeleteEventTypesAsync(EventTypeModel eventTypeToDelete);
+        Task DeleteEventTypeAsync(EventTypeModel eventTypeToDelete);
         Task ClearAllEventTypesAsync();
 
         Task SaveEventsAndTypesToFile(IEnumerable<EventModel> eventsToSave = null);

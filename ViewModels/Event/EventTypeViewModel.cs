@@ -108,27 +108,16 @@ namespace TheKalendarzyk.ViewModels.Events
             }
         }
 
-        public int? QuantityId
-        {
-            get => _eventTypeModel.QuantityId;
-            set
-            {
-                if (_eventTypeModel.QuantityId != value)
-                {
-                    _eventTypeModel.QuantityId = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
 
-        public QuantityModel QuantityAmount
+
+        public MeasurementUnit? MeasurementUnitVM
         {
-            get => _eventTypeModel.QuantityAmount;
+            get => _eventTypeModel.MeasurementUnit;
             set
             {
-                if (_eventTypeModel.QuantityAmount != value)
+                if (_eventTypeModel.MeasurementUnit != value)
                 {
-                    _eventTypeModel.QuantityAmount = value;
+                    _eventTypeModel.MeasurementUnit = value;
                     OnPropertyChanged();
                 }
             }

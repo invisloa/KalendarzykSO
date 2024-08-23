@@ -23,9 +23,6 @@ namespace Kalendarzyk.Models.EventTypesModels
 
         public bool IsMicroTaskType { get; set; }
 
-
-        // Ignored properties (not stored directly in the database)
-        [Ignore]
         public MeasurementUnit? MeasurementUnit { get; set; }
 
         // Ignored properties (not stored directly in the database)

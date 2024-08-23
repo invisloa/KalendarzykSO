@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AsyncAwaitBestPractices;
+using Microsoft.Extensions.Logging;
+using TheKalendarzyk.Services;
 
 namespace KalendarzykSO
 {
@@ -6,6 +8,7 @@ namespace KalendarzykSO
     {
         public static MauiApp CreateMauiApp()
         {
+            Factory.InitializeEventRepository().SafeFireAndForget();
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()

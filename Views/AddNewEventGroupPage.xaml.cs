@@ -1,25 +1,13 @@
-using Kalendarzyk.Models.EventTypesModels;
-using Kalendarzyk.ViewModels;
 using KalendarzykSO.ViewModels;
-using TheKalendarzyk.ViewModels.Events;
 
-namespace Kalendarzyk.Views;
+namespace KalendarzykSO.Views;
 
-public partial class AddNewMainTypePage : ContentPage
+public partial class AddNewEventGroupPage : ContentPage
 {
-	public AddNewMainTypePage()
-    {
-        InitializeComponent();
-
-        BindingContext = new AddNewEventGroupViewModel();
-    }
-	public AddNewMainTypePage(EventGroupViewModel eventGroup)
-    {
-        InitializeComponent();
-
-        BindingContext = new AddNewEventGroupViewModel(eventGroup);
+	public AddNewEventGroupPage()
+	{
+		AddNewEventGroupViewModel viewModel = new AddNewEventGroupViewModel();
+		InitializeComponent();
+		BindingContext = viewModel;
 	}
-
-
 }
-

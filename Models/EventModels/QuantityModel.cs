@@ -5,10 +5,8 @@ using System.Globalization;
 
 namespace Kalendarzyk.Models.EventModels
 {
-    [Table("QuantityModel")]
     public class QuantityModel
     {
-        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public int EventId { get; set; } // Foreign Key to EventModel
         public decimal Value { get; set; }

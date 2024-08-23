@@ -43,12 +43,12 @@ namespace TheKalendarzyk.ViewModels.Events
         }
         public string Title
         {
-            get => _eventGroupModel.Title;
+            get => _eventGroupModel.GroupName;
             set
             {
-                if (_eventGroupModel.Title != value)
+                if (_eventGroupModel.GroupName != value)
                 {
-                    _eventGroupModel.Title = value;
+                    _eventGroupModel.GroupName = value;
                     OnPropertyChanged();
                 }
             }
@@ -56,12 +56,12 @@ namespace TheKalendarzyk.ViewModels.Events
 
         public int IconModelId
         {
-            get => _eventGroupModel.IconModelId;
+            get => _eventGroupModel.SelectedVisualElementId;
             set
             {
-                if (_eventGroupModel.IconModelId != value)
+                if (_eventGroupModel.SelectedVisualElementId != value)
                 {
-                    _eventGroupModel.IconModelId = value;
+                    _eventGroupModel.SelectedVisualElementId = value;
                     OnPropertyChanged();
                 }
             }

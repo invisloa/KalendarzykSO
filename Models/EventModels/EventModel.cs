@@ -34,14 +34,13 @@ namespace Kalendarzyk.Models.EventModels
         [Ignore]
         public EventTypeModel EventType { get; set; }
         // Ignored properties (not stored directly in the database)
-        [Ignore]
-        public QuantityModel QuantityAmount { get; set; }
+        public decimal? Value { get; set; }
         [Ignore]
         public List<MicroTaskModel> MicroTasks { get; set; }
 
         public EventModel() { }
 
-        public EventModel(string title, string description, DateTime startTime, DateTime endTime, EventTypeModel eventType, QuantityModel quantity = null,
+        public EventModel(string title, string description, DateTime startTime, DateTime endTime, EventTypeModel eventType, decimal? value = null,
                                   bool isCompleted = false, TimeSpan? remindTime = null, bool wasShown = false, Guid? id = null, int? notificationID = null, bool usesNotification = false)
         {
             ReminderTime = remindTime ?? _defaulteventRemindertime;
@@ -52,7 +51,7 @@ namespace Kalendarzyk.Models.EventModels
             EventType = eventType; // Use concrete type
             IsCompleted = isCompleted;
             WasShown = wasShown;
-            QuantityAmount = quantity;
+            Value = value;
         }
     }
 }

@@ -11,9 +11,9 @@ namespace Kalendarzyk.Models.EventTypesModels
         public int Id { get; set; } // Primary Key
         [MaxLength(55)]
         [Unique]
-        public string Title { get; set; }
+        public string GroupName { get; set; }
 
-        public int IconModelId { get; set; } // Foreign Key
+        public int SelectedVisualElementId { get; set; } // Foreign Key
 
         [Ignore]
         public IconModel SelectedVisualElement { get; set; }
@@ -22,13 +22,13 @@ namespace Kalendarzyk.Models.EventTypesModels
 
         public EventGroupModel(string title, IconModel icon)
         {
-            Title = title;
+            GroupName = title;
             SelectedVisualElement = icon;
         }
 
         public override string ToString()
         {
-            return Title;
+            return GroupName;
         }
 
         public override bool Equals(object obj)
